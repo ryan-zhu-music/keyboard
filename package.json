@@ -1,5 +1,5 @@
 {
-  "name": "keyboard",
+  "name": "react-music-keyboard",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/cjs/index.js",
@@ -7,7 +7,7 @@
   "types": "./dist/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryan-zhu-music/keyboard.git"
+    "url": "git+https://github.com/ryan-zhu-music/react-music-keyboard.git"
   },
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
@@ -19,9 +19,15 @@
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
     "test": "jest --config jestconfig.json"
   },
-  "keywords": [],
-  "author": "ryanzhumusic",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwind",
+    "keyboard",
+    "music"
+  ],
+  "author": "Ryan Zhu (ryanzhumusic)",
+  "license": "MIT",
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.0.3",
@@ -45,5 +51,13 @@
   },
   "dependencies": {
     "tailwindcss": "^3.1.8"
-  }
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
 }
