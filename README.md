@@ -51,7 +51,7 @@ import { Keyboard } from 'react-music-keyboard'
 | **whiteKeyStyles**  | object                  | `{}`          | Additional styles applied to white keys.                                                    |
 | **blackKeyStyles**  | object                  | `{}`          | Additional styles applied to black keys.                                                    |
 | **containerStyles** | object                  | `{}`          | Additional styles applied to the keyboard container.                                        |
-| **whiteKeyClass**   | string                  | `""`          | Additional classes applied to white keys. Useful for non-JS styles, e.g. `:hover`.          |
+| **whiteKeyClass**   | string                  | `""`          | Additional classes applied to white keys.                                                   |
 | **blackKeyClass**   | string                  | `""`          | Additional classes applied to black keys.                                                   |
 | **containerClass**  | string                  | `""`          | Additional classes applied to the keyboard container.                                       |
 
@@ -62,3 +62,18 @@ import { Keyboard } from 'react-music-keyboard'
 - **All number props must be greater than 0.**
 - **Start and end notes must be white keys.**
 - **keySpacing must be between 1 and 10.**
+
+---
+
+### Using the additional classes
+
+The additional classes are useful for non-JS styles, e.g. `:hover`.
+
+Define the styles in a CSS file, and import it into your root HTML file (e.g. `index.html`, or a `<Head />` component). **Importing directly into a component will not work.**
+
+See the [demo](https://github.com/ryan-zhu-music/react-music-keyboard-demo) for an example of styling the `:hover` state of the keys.
+
+- `white-key`, `black-key`, and `keyboard` styles are defined in `/public/styles.css`.
+  - Note that the styles must use the `!important` flag.
+- `/public/styles.css` is imported into `/public/index.html`.
+- The classes are passed into the component as props, e.g. `<Keyboard whiteKeyClass="white-key" />`.
