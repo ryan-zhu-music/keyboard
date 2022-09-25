@@ -31,6 +31,9 @@ type Props = {
   whiteKeyStyles?: any
   blackKeyStyles?: any
   containerStyles?: any
+  whiteKeyClass?: string
+  blackKeyClass?: string
+  containerClass?: string
 }
 
 const Keyboard: React.FC<Props> = ({
@@ -51,6 +54,9 @@ const Keyboard: React.FC<Props> = ({
   whiteKeyStyles = {},
   blackKeyStyles = {},
   containerStyles = {},
+  whiteKeyClass = '',
+  blackKeyClass = '',
+  containerClass = '',
 }) => {
   if (allBlackKeys.includes(startNote) || allBlackKeys.includes(endNote)) {
     throw new Error('Start and end notes must be white keys')
@@ -108,6 +114,7 @@ const Keyboard: React.FC<Props> = ({
         borderRadius: borderRadius + 'px',
         ...containerStyles,
       }}
+      className={containerClass}
     >
       <div
         style={{
@@ -136,7 +143,7 @@ const Keyboard: React.FC<Props> = ({
               ...blackKeyStyles,
             }}
             key={key}
-            className='key'
+            className={'key ' + blackKeyClass}
             onClick={() => onKeyPress(key)}
           />
         ))}
@@ -167,7 +174,7 @@ const Keyboard: React.FC<Props> = ({
               transition: `all ${transition}ms ease-in-out`,
               ...whiteKeyStyles,
             }}
-            className='key'
+            className={'key ' + whiteKeyClass}
             key={key}
             onClick={() => onKeyPress(key)}
           />
