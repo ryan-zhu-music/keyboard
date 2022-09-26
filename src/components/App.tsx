@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as Tone from 'tone'
 
 const keyNames = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 const blackKeyNames = ['C', 'D', 'F', 'G', 'A']
@@ -15,6 +16,14 @@ for (let i = 1; i <= 7; i++) {
 }
 allWhiteKeys.push('C8')
 
+const playNote = (note: string | number, duration: number) => {
+  const synth = new Tone.Synth().toDestination()
+  const now = Tone.now()
+  synth.triggerAttack(note, now)
+  synth.triggerRelease(now + duration)
+  return
+}
+
 type Props = {
   height?: number
   whiteKeyWidth?: number
@@ -23,6 +32,8 @@ type Props = {
   keySpacing?: number
   startNote?: string
   endNote?: string
+  sound?: boolean
+  duration?: number
   onKeyPress?: (note: string) => void
   borderRadius?: number
   whiteKeyColor?: string
@@ -44,6 +55,8 @@ const Keyboard: React.FC<Props> = ({
   keySpacing = 5,
   startNote = 'C2',
   endNote = 'A4',
+  sound = true,
+  duration = 0.5,
   onKeyPress = () => {
     /*Handle key press*/
   },
@@ -144,7 +157,10 @@ const Keyboard: React.FC<Props> = ({
             }}
             key={key}
             className={'key ' + blackKeyClass}
-            onClick={() => onKeyPress(key)}
+            onClick={() => {
+              onKeyPress(key)
+              if (sound) playNote(key, duration)
+            }}
           />
         ))}
       </div>
@@ -176,7 +192,10 @@ const Keyboard: React.FC<Props> = ({
             }}
             className={'key ' + whiteKeyClass}
             key={key}
-            onClick={() => onKeyPress(key)}
+            onClick={() => {
+              onKeyPress(key)
+              if (sound) playNote(key, duration)
+            }}
           />
         ))}
       </div>
